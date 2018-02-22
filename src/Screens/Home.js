@@ -11,7 +11,8 @@ class Home extends Component {
 
   render() {
     return (
-     <C.Header/>
+      <div>
+      </div>
     );
   }
 }

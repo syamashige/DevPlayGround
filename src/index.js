@@ -25,6 +25,7 @@ ReactDOM.render(
       <div>
         <Route path="/" component={Screens.Home} />
         <Route path="/emotions" component={Screens.Emotion} />
+        <Route path="/bus" component={Screens.BusSearch} />
       </div>
     </Router>
   </Provider>, document.getElementById('root'));
