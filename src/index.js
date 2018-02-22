@@ -24,6 +24,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Route path="/" component={Screens.Home} />
+        <Route path="/emotions" component={Screens.Emotion} />
       </div>
     </Router>
   </Provider>, document.getElementById('root'));
