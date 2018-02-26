@@ -3,7 +3,7 @@ import { PropagateLoader } from 'react-spinners';
 import { Label, ListGroupItem, ListGroup, Button, Navbar, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import './Bus.css';
-const busURL = 'http://localhost:9000/bus/';
+const busURL = 'http://54.88.118.239/bus/';
 const mapUrl = "https://www.google.com/maps/?q=";
 
 
@@ -17,6 +17,16 @@ class BusSearch extends Component {
       loading: false
     }
     this.findBus=this.findBus.bind(this);
+  }
+
+  componentWillMount() {
+    let busStopNum = '883';
+    axios.get(busURL+busStopNum)
+    .then(res => {
+      this.setState({bus: res.data})
+    }).catch(err => {
+      this.setState({value: 'system is done right now'})
+    })
   }
 
   findBus(){

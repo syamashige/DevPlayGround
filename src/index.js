@@ -23,7 +23,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
-        <Route path="/" component={Screens.Home} />
+        <Route exact path="/" component={Screens.Home} />
         <Route path="/emotions" component={Screens.Emotion} />
         <Route path="/bus" component={Screens.BusSearch} />
       </div>
