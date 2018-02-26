@@ -14,7 +14,7 @@ export const data = [
 	},{
 		api: 'Yelp', 
 		feature: 'Yelp Food Image Search', 
-		demo:'/yelp', 
+		demo:'https://expo.io/@baseem/powwow', //TODO: change to munch link after deployment
 		code: 'https://github.com/ba5eem/DevPlayGround', 
 		guide:'https://www.yelp.com/fusion'
 	},{
