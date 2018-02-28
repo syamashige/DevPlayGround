@@ -30,4 +30,10 @@ export const data = [
 		demo:'/movie', 
 		code: 'https://github.com/ba5eem/DevPlayGround', 
 		guide:'https://www.themoviedb.org/documentation/api'
+	},{
+		api: 'Google Cloud', 
+		feature: 'Translate API', 
+		demo:'/translate', 
+		code: 'https://github.com/ba5eem/DevPlayGround', 
+		guide:'https://cloud.google.com/translate/'
 	}]

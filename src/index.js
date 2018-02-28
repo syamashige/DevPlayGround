@@ -26,6 +26,7 @@ ReactDOM.render(
         <Route path="/emotions" component={Screens.Emotion} />
         <Route path="/bus" component={Screens.BusSearch} />
         <Route path="/movie" component={Screens.Movies} />
+        <Route path="/translate" component={Screens.Translate} />
       </div>
     </Router>
   </Provider>, document.getElementById('root'));
