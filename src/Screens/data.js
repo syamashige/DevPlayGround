@@ -23,4 +23,11 @@ export const data = [
 		demo:'/', 
 		code: 'https://github.com/ba5eem/DevPlayGround', 
 		guide:'https://www.ibm.com/watson/services/conversation/'
-	},]
+	},
+	{
+		api: 'TMDB', 
+		feature: 'The Movie DB', 
+		demo:'/movie', 
+		code: 'https://github.com/ba5eem/DevPlayGround', 
+		guide:'https://www.themoviedb.org/documentation/api'
+	}]

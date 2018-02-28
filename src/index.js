@@ -10,7 +10,6 @@ import * as Screens from './Screens';
 import registerServiceWorker from './registerServiceWorker';
 
 
-
 const store = createStore(
   reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -26,6 +25,7 @@ ReactDOM.render(
         <Route exact path="/" component={Screens.Home} />
         <Route path="/emotions" component={Screens.Emotion} />
         <Route path="/bus" component={Screens.BusSearch} />
+        <Route path="/movie" component={Screens.Movies} />
       </div>
     </Router>
   </Provider>, document.getElementById('root'));
