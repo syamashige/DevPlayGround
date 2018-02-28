@@ -81,9 +81,9 @@ app.post('/', (req, res) => {
 ## Yelp API - YELP
 
 ```js
-const yelp        = require('yelp-fusion');
-const API_KEY      = process.env.YELP_APIKEY;
-const client      = yelp.client(API_KEY);
+const yelp = require('yelp-fusion');
+const API_KEY = process.env.YELP_APIKEY;
+const client = yelp.client(API_KEY);
 
 app.get('/:id', (req, res) => {
   const zipcode = req.params.id;
