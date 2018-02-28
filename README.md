@@ -105,6 +105,23 @@ app.get('/:id', (req, res) => {
 ```
 
 
+## TMDB - The Movie Database
+
+```js
+ getFilm() {
+ 	const API_KEY = process.env.TMDB_API_KEY;
+ 	let query = 'batman';
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
+
+    axios.get(url)
+    .then(data => {
+      console.log(data);
+    }).catch(err => {
+	  console.log('error');
+    })
+  }
+```
+
 
 ## DaBus API - Honolulu
  - The api does not have json :(, you can use this npm package to convert xml to json:
