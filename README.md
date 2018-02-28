@@ -68,13 +68,13 @@ app.post('/', (req, res) => {
   var options = { method: 'POST',
    url: 'https://translation.googleapis.com/language/translate/v2',
    form: 
-	   { key: process.env.API_KEY,
-	     q: q,
-	     target: 'en' } };
-	request(options, function (error, response, body) {
-  	if (error) throw new Error(error);
+     { key: process.env.API_KEY,
+       q: q,
+       target: 'en' } };
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
     res.send(body);
-	});
+  });
 })
 ```
 
@@ -109,15 +109,15 @@ app.get('/:id', (req, res) => {
 
 ```js
  getFilm() {
- 	const API_KEY = process.env.TMDB_API_KEY;
- 	let query = 'batman';
+  const API_KEY = process.env.TMDB_API_KEY;
+  let query = 'batman';
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`;
 
     axios.get(url)
     .then(data => {
       console.log(data);
     }).catch(err => {
-	  console.log('error');
+    console.log('error');
     })
   }
 ```
