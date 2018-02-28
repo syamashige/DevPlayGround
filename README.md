@@ -5,6 +5,8 @@ This Web-App will include a library of API samples - to make it easier when work
 
 Including Code Samples, Videos, Demo Sites
 
+Below are examples for getting started with the different API's:
+
 ## Emotional API - IBM WATSON
 
 ```js
@@ -30,6 +32,79 @@ app.post('/', (req,res) => {
   });
 });
 ```
+
+## Conversation API - IBM WATSON
+
+```js
+const ConversationV1 = require('watson-developer-cloud/conversation/v1');
+const conversation = new ConversationV1(config.conversParams);
+const workspace_id = process.env.IBM_WORKSPACEID;
+
+app.post('/', (req,res) => {
+  var msg = req.body.msg;
+  conversation.message(
+    {
+      input: { text: msg },
+      workspace_id: workspace_id
+    },
+    function(err, response) {
+      if (err) {
+        console.error(err);
+      } else {
+        var watsonResponse = response.output.text[0];
+        res.json(response)
+      }
+    }
+  );
+})
+```
+
+## Translate API - GOOGLE
+
+```js
+
+app.post('/', (req, res) => {
+  var q = req.body.q;
+  var options = { method: 'POST',
+   url: 'https://translation.googleapis.com/language/translate/v2',
+   form: 
+	   { key: process.env.API_KEY,
+	     q: q,
+	     target: 'en' } };
+	request(options, function (error, response, body) {
+  	if (error) throw new Error(error);
+    res.send(body);
+	});
+})
+```
+
+## Yelp API - YELP
+
+```js
+const yelp        = require('yelp-fusion');
+const API_KEY      = process.env.YELP_APIKEY;
+const client      = yelp.client(API_KEY);
+
+app.get('/:id', (req, res) => {
+  const zipcode = req.params.id;
+
+  const searchRequest = {
+    term: 'food',
+    limit: 10,
+    radius: 20000,
+    location: zipcode
+  };
+    client.search(searchRequest)
+    .then(response => {
+      res.json(response.jsonBody.businesses)
+    }).catch(e => {
+      console.log(e);
+    });
+})
+
+```
+
+
 
 ## DaBus API - Honolulu
  - The api does not have json :(, you can use this npm package to convert xml to json:
