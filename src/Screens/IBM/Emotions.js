@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { PropagateLoader } from 'react-spinners';
 import axios from 'axios';
 import './emotions.css';
+import {arr,placeholder,uri,temp} from '../../config';
 
-const arr = ['yellow', 'salmon', 'cornflowerblue', 'lightgreen', 'orange'];
-const placeholder = "paste the text that you want to analyze";
-const uri = 'http://54.88.118.239/emo'
-const temp = {needs:[], personality:[],values:[],warnings:[]};
 
 class Emotion extends Component {
   constructor(props){

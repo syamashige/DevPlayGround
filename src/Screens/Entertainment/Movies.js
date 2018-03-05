@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Navbar,FormGroup, FormControl, Button, Image, ListGroup, ListGroupItem, Col, Popover, Tooltip, Modal, OverlayTrigger,Badge,Glyphicon,Label} from 'react-bootstrap';
-const moviedb = 'https://www.themoviedb.org/static_cache/v4/logos/408x161-powered-by-rectangle-blue-10d3d41d2a0af9ebcb85f7fb62ffb6671c15ae8ea9bc82a2c6941f223143409e.png'
-
+import {moviedb,movieurl, wikipedia,hulu, imdb, rotten, amazon} from '../../config';
 
 
 class Movies extends Component {
@@ -26,7 +25,7 @@ class Movies extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:9000/movie')
+    axios.get(movieurl)
     .then(data => {
       this.setState({results: data.data})
     })
@@ -34,8 +33,7 @@ class Movies extends Component {
 
   getFilm(){
     const {query} = this.state;
-    let url = 'http://localhost:9000/movie/'; 
-    axios.get(url+query)
+    axios.get(movieurl + '/' + query)
     .then(data => {
       let res = data.data;
       console.log(res);
@@ -79,11 +77,7 @@ class Movies extends Component {
       </Popover>
     );
     const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
-    const wikipedia = 'https://en.wikipedia.org/wiki/';
-    const hulu = 'https://www.hulu.com/search?q=';
-    const imdb = 'http://www.imdb.com/find?ref_=nv_sr_fn&q=';
-    const rotten = 'https://www.rottentomatoes.com/search/?search=';
-    const amazon = 'https://www.amazon.com/s?field-keywords=';
+    
     return (
       <div>
         <Navbar>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { PageHeader, Well } from 'react-bootstrap';
 import './Translate.css';
+import {translate_URL} from '../../config';
 
 
 
@@ -17,7 +18,7 @@ class Translate extends Component {
   }
 
   translate(){
-    axios.post('http://localhost:9000/translate',{q:this.state.value})
+    axios.post(translate_URL,{q:this.state.value})
     .then(data => {
       this.setState({translated: data.data.data.translations[0].translatedText})
       console.log(data.data.data.translations[0].translatedText)

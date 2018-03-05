@@ -36,4 +36,11 @@ export const data = [
 		demo:'/translate', 
 		code: 'https://github.com/ba5eem/DevPlayGround', 
 		guide:'https://cloud.google.com/translate/'
+	}
+	,{
+		api: 'GIHPY', 
+		feature: 'Gihpy API', 
+		demo:'/gifs', 
+		code: 'https://github.com/ba5eem/DevPlayGround', 
+		guide:'https://developers.giphy.com/docs/'
 	}]

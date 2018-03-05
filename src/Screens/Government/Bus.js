@@ -3,8 +3,7 @@ import { PropagateLoader } from 'react-spinners';
 import { Label, ListGroupItem, ListGroup, Button, Navbar, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import './Bus.css';
-const busURL = 'http://54.88.118.239/bus/';
-const mapUrl = "https://www.google.com/maps/?q=";
+import {busURL,mapUrl} from '../../config';
 
 
 class BusSearch extends Component {

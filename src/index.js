@@ -27,6 +27,7 @@ ReactDOM.render(
         <Route path="/bus" component={Screens.BusSearch} />
         <Route path="/movie" component={Screens.Movies} />
         <Route path="/translate" component={Screens.Translate} />
+        <Route path="/gifs" component={Screens.Gifs} />
       </div>
     </Router>
   </Provider>, document.getElementById('root'));
