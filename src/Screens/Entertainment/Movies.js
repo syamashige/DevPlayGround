@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Navbar,FormGroup, FormControl, Button, Image, ListGroup, ListGroupItem, Col, Popover, Tooltip, Modal, OverlayTrigger,Badge,Glyphicon,Label} from 'react-bootstrap';
-import {apikey} from '../../config';
 const moviedb = 'https://www.themoviedb.org/static_cache/v4/logos/408x161-powered-by-rectangle-blue-10d3d41d2a0af9ebcb85f7fb62ffb6671c15ae8ea9bc82a2c6941f223143409e.png'
 
 
@@ -27,27 +26,25 @@ class Movies extends Component {
   }
 
   componentWillMount() {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&page=1&include_adult=false&query=batman`
-    axios.get(url)
+    axios.get('http://localhost:9000/movie')
     .then(data => {
-      console.log(data);
-      this.setState({results: data.data.results})
+      this.setState({results: data.data})
     })
   }
 
   getFilm(){
     const {query} = this.state;
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&page=1&include_adult=false&query=${query}`
-    axios.get(url)
+    let url = 'http://localhost:9000/movie/'; 
+    axios.get(url+query)
     .then(data => {
       let res = data.data;
-      console.log(data);
+      console.log(res);
       this.setState({
         title: res.title,
         overview: res.overview,
         poster: res.homepage+res.poster_path,
         vote: res.vote_average,
-        results: res.results,
+        results: res,
       })
     })
     .catch(err => {
