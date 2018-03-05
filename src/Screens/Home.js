@@ -3,6 +3,7 @@ import * as C from './Components';
 import { Widget, addResponseMessage } from 'react-chat-widget';
 import axios from 'axios';
 import {data} from './data';
+import {chatUrl} from '../config';
 
 
 
@@ -19,7 +20,7 @@ class Home extends Component {
 
   handleNewUserMessage(newMessage){
     console.log(newMessage)
-    axios.post('http://54.88.118.239/chat',{msg:newMessage})
+    axios.post(chatUrl,{msg:newMessage})
     .then((msg) => {
       addResponseMessage(msg.data);
     })

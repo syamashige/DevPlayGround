@@ -13,3 +13,4 @@ export const arr = ['yellow', 'salmon', 'cornflowerblue', 'lightgreen', 'orange'
 export const placeholder = "paste the text that you want to analyze";
 export const uri = 'http://54.88.118.239/emo'
 export const temp = {needs:[], personality:[],values:[],warnings:[]};
+export const chatUrl = 'http://54.88.118.239/chat';
