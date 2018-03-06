@@ -1,3 +1,4 @@
+//API imports
 import Home from './Home';
 import Emotion from './IBM/Emotions';
 import BusSearch from './Government/Bus';
@@ -6,8 +7,21 @@ import Gifs from './Entertainment/Gifs';
 import Space from './Entertainment/Space';
 import Translate from './Google/Translate';
 
+//Web App utility imports
+import Register from './Auth/Register';
+import Signin from './Auth/Signin';
+
 // This index page imports all screens. For example:
 
 // index.js -> screens.index.js -> screens folder -> IBM folder -> Emotion
 
-export { Home, Emotion, BusSearch, Movies, Translate, Gifs, Space };
+export { 
+	Home, 
+	Emotion, 
+	BusSearch, 
+	Movies, 
+	Translate, 
+	Gifs, 
+	Space, 
+	Signin, 
+	Register };

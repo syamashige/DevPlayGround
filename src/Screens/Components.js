@@ -8,9 +8,17 @@ export const Header = () => {
        <BS.Navbar>
         <BS.Navbar.Header>
           <BS.Navbar.Brand>
-            <a href="#home" className='header-title'>30 Days of API</a>
+            <a href="/" className='header-title'>30 Days of API</a>
           </BS.Navbar.Brand>
         </BS.Navbar.Header>
+        <BS.Nav pullRight>
+          <BS.NavItem eventKey={1} href="/signin">
+              <BS.Button>Sign-in</BS.Button>
+          </BS.NavItem>
+          <BS.NavItem eventKey={1} href="/register">
+              <BS.Button style={{border: '1px solid orange'}}>Register</BS.Button>
+          </BS.NavItem>
+        </BS.Nav>
       </BS.Navbar>
      </div>
     );
@@ -47,7 +55,7 @@ export const RenderDemos = ({src}) => {
             {src.map((elem,i) => {
               return(
                 <BS.ListGroupItem key={i}>
-                  <BS.Badge style={btnStyle} >{i+1}</BS.Badge>
+                  <BS.Badge style={btnStyle} >baseem</BS.Badge>
                   {/* if index is 3, change the button to open the chat widget vs changing sites*/}
                   {i === 3 ? 
                     <BS.OverlayTrigger 

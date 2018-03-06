@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as C from './Components';
-import { Widget, addResponseMessage, toggleWidget } from 'react-chat-widget';
+import { Widget, addResponseMessage } from 'react-chat-widget';
 import axios from 'axios';
 import {data} from './data';
 import {chatUrl, apiurl} from '../config';

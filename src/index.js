@@ -29,6 +29,8 @@ ReactDOM.render(
         <Route path="/translate" component={Screens.Translate} />
         <Route path="/gifs" component={Screens.Gifs} />
         <Route path="/space" component={Screens.Space} />
+        <Route path="/signin" component={Screens.Signin} />
+        <Route path="/register" component={Screens.Register} />
       </div>
     </Router>
   </Provider>, document.getElementById('root'));
