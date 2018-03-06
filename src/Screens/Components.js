@@ -132,7 +132,7 @@ export const RenderDemos = ({src}) => {
                       <BS.Button 
                         disabled 
                         style={btnStyle} 
-                        bsStyle="danger">Video Tutorial Coming Soon
+                        bsStyle="default">Video Tutorial Coming Soon
                       </BS.Button>
                   }
 
