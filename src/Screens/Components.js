@@ -2,7 +2,28 @@ import React from 'react';
 import * as BS from 'react-bootstrap';
 import { toggleWidget } from 'react-chat-widget';
 
-export const Header = () => {
+
+
+export const NotLogginIn = ({login}) => {
+  return(
+    <div className="static-modal">
+      <BS.Modal.Dialog>
+        <BS.Modal.Header>
+          <BS.Modal.Title>Your not logged in</BS.Modal.Title>
+        </BS.Modal.Header>
+
+        <BS.Modal.Body>You arrived at this page, because you wanted to contribute to the 30 days of Api Library - which is awesome! and thank you :) first thing thou, please login - that way we can put your name next to the submission and other devs can see who created this awesome demo!</BS.Modal.Body>
+
+        <BS.Modal.Footer>
+          <BS.Button onClick={login} bsStyle="primary">Sign-in / Register</BS.Button>
+        </BS.Modal.Footer>
+      </BS.Modal.Dialog>
+    </div>
+    )
+}
+
+
+export const Header = ({auth,login}) => {
   return (
      <div>
        <BS.Navbar>
@@ -12,12 +33,18 @@ export const Header = () => {
           </BS.Navbar.Brand>
         </BS.Navbar.Header>
         <BS.Nav pullRight>
-          <BS.NavItem eventKey={1} href="/signin">
-              <BS.Button>Sign-in</BS.Button>
-          </BS.NavItem>
-          <BS.NavItem eventKey={1} href="/register">
-              <BS.Button style={{border: '1px solid orange'}}>Register</BS.Button>
-          </BS.NavItem>
+          
+                {auth.isAuthenticated() &&
+                    <BS.NavItem eventKey={1} href="/add">
+                      <BS.Button>Add API Demo</BS.Button>
+                    </BS.NavItem>
+                }
+                {!auth.isAuthenticated() &&
+                    <BS.NavItem eventKey={1}>
+                     <BS.Button onClick={login}>Sign-in</BS.Button>
+                    </BS.NavItem>
+                }
+          
         </BS.Nav>
       </BS.Navbar>
      </div>

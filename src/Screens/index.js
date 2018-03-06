@@ -8,8 +8,8 @@ import Space from './Entertainment/Space';
 import Translate from './Google/Translate';
 
 //Web App utility imports
-import Register from './Auth/Register';
-import Signin from './Auth/Signin';
+import Add from './Add';
+
 
 // This index page imports all screens. For example:
 
@@ -23,5 +23,5 @@ export {
 	Translate, 
 	Gifs, 
 	Space, 
-	Signin, 
-	Register };
+	Add
+	 };
