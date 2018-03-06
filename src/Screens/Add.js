@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as BS from 'react-bootstrap';
 import * as C from './Components';
-
+import validator from 'validator';
 
 
 
@@ -14,9 +14,13 @@ class Add extends Component {
 			api: '',
 			feature: '',
 			demo: '',
+			demoIsUrl: false,
 			code: '',
+			codeIsUrl: false,
 			guide: '',
-			video: ''
+			guideIsUrl: false,
+			video: '',
+			videoIsUrl: false
 		}
 	}
 
@@ -24,12 +28,38 @@ class Add extends Component {
     this.props.auth.login();
   }
 
-  handleNewDemo(){
+  handleChange(e){
+  	const { api, feature, demo, code, guide, video } = this.state;
+  	let {title,value} = e.target;
+  	this.setState({[title]:value})
+  	if(validator.isURL(demo,['http','https'])){
+  		this.setState({demoIsUrl: true})
+  	}
+  	if(validator.isURL(code,['http','https'])){
+  		this.setState({codeIsUrl: true})
+  	}
+  	if(validator.isURL(guide,['http','https'])){
+  		this.setState({guideIsUrl: true})
+  	}
+  }
+
+  handleNewDemo(e){
+  	e.preventDefault()
+  	const { api, feature, demo, code, guide, video } = this.state;
+  	let local = {
+  		api: api,
+  		feature: feature,
+  		demo: demo,
+  		code: code,
+  		guide: guide,
+  		video: video
+  	}
+  	console.log(local);
 
   }
 
 	render() {
-		const { api, feature, demo, code, guide, video } = this.state;
+		const { api, feature, demo, code, guide, video, demoIsUrl, codeIsUrl, guideIsUrl,videoIsUrl } = this.state;
 		const {isAuthenticated} = this.props.auth;
 		if(!isAuthenticated()){
 			return(<C.NotLogginIn login={this.login.bind(this)}/>)
@@ -54,7 +84,8 @@ class Add extends Component {
 			    <BS.ControlLabel>Powered by:</BS.ControlLabel>
 			    <BS.FormControl
 			    	value={api}
-			    	onChange={(e)=>this.setState({api: e.target.value})}
+			    	title='api'
+			    	onChange={this.handleChange.bind(this)}
 			    	placeholder="ex. IBM Watson" 
 			    	type="text" />
 			    	{api.length !== 0 && <BS.FormControl.Feedback />}   
@@ -64,7 +95,8 @@ class Add extends Component {
 			    <BS.ControlLabel>Feature of your API:</BS.ControlLabel>
 			    <BS.FormControl
 			    	value={feature}
-			    	onChange={(e)=>this.setState({feature: e.target.value})}
+			    	title='feature'
+			    	onChange={this.handleChange.bind(this)}
 			    	placeholder="ex. Chat/Conversation tool" 
 			    	type="text" />
 			    	{feature.length !== 0 && <BS.FormControl.Feedback />}   
@@ -74,40 +106,44 @@ class Add extends Component {
 			    <BS.ControlLabel>Link to your demo:</BS.ControlLabel>
 			    <BS.FormControl
 			    	value={demo}
-			    	onChange={(e)=>this.setState({demo: e.target.value})}
+			    	title='demo'
+			    	onChange={this.handleChange.bind(this)}
 			    	placeholder="ex. https://onermcalc.herokuapp.com/" 
 			    	type="text" />
-			    	{demo.length !== 0 && <BS.FormControl.Feedback />}   
+			    	{demoIsUrl && <BS.FormControl.Feedback />}   
 			  </BS.FormGroup>
 
 			  <BS.FormGroup controlId="formValidationSuccess2" validationState="success">
 			    <BS.ControlLabel>Link to your code:</BS.ControlLabel>
 			    <BS.FormControl
 			    	value={code}
-			    	onChange={(e)=>this.setState({code: e.target.value})}
+			    	title='code'
+			    	onChange={this.handleChange.bind(this)}
 			    	placeholder="ex. https://github.com/ba5eem/DevPlayGround" 
 			    	type="text" />
-			    	{code.length !== 0 && <BS.FormControl.Feedback />}   
+			    	{codeIsUrl && <BS.FormControl.Feedback />}   
 			  </BS.FormGroup>
 
 			  <BS.FormGroup controlId="formValidationSuccess2" validationState="success">
 			    <BS.ControlLabel>Link to the docs for the API:</BS.ControlLabel>
 			    <BS.FormControl
 			    	value={guide}
-			    	onChange={(e)=>this.setState({guide: e.target.value})}
+			    	title='guide'
+			    	onChange={this.handleChange.bind(this)}
 			    	placeholder="ex. https://console.bluemix.net/developer/watson/documentation" 
 			    	type="text" />
-			    	{guide.length !== 0 && <BS.FormControl.Feedback />}   
+			    	{guideIsUrl && <BS.FormControl.Feedback />}   
 			  </BS.FormGroup>
 
 			  <BS.FormGroup controlId="formValidationNull" validationState={null}>
 			    <BS.ControlLabel>Link to video tutorial: (optional)</BS.ControlLabel>
 			    <BS.FormControl
 			    	value={video}
-			    	onChange={(e)=>this.setState({video: e.target.value})}
+			    	title='video'
+			    	onChange={this.handleChange.bind(this)}
 			    	placeholder="ex. https://www.youtube.com/watch?v=Atv8HtCuPyg" 
 			    	type="text" />
-			    	{video.length !== 0 && <BS.FormControl.Feedback />}   
+			    	{videoIsUrl && <BS.FormControl.Feedback />}   
 			  </BS.FormGroup>
 
 			  <BS.FormGroup>
