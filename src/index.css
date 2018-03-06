@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.header-title {
+	font-size: 40px;
+	font-family: 'Coiny', cursive;
+}

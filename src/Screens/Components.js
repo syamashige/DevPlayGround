@@ -7,13 +7,37 @@ export const Header = () => {
        <BS.Navbar>
         <BS.Navbar.Header>
           <BS.Navbar.Brand>
-            <a href="#home">30 Days of API</a>
+            <a href="#home" className='header-title'>30 Days of API</a>
           </BS.Navbar.Brand>
         </BS.Navbar.Header>
       </BS.Navbar>
      </div>
     );
 }
+
+export const demotip = (
+  <BS.Tooltip id="tooltip">
+    <strong>Click here to try it out!</strong>
+  </BS.Tooltip>
+);
+
+export const powertip = (
+  <BS.Tooltip id="tooltip">
+    <strong>Powered by:</strong>
+  </BS.Tooltip>
+);
+
+export const codetip = (
+  <BS.Tooltip id="tooltip">
+    <strong>Straight to the code!</strong>
+  </BS.Tooltip>
+);
+
+export const apitip = (
+  <BS.Tooltip id="tooltip">
+    <strong>Docs make this possible</strong>
+  </BS.Tooltip>
+);
 
 export const RenderDemos = ({src}) => {
   return(
@@ -22,19 +46,34 @@ export const RenderDemos = ({src}) => {
               return(
                 <BS.ListGroupItem key={i}>
                   <BS.Badge style={btnStyle} >{i+1}</BS.Badge>
-                  <a href={elem.demo}>
-                  <BS.Button style={btnStyle} bsStyle="success">Demo</BS.Button></a>
+                  <BS.OverlayTrigger placement="top" overlay={demotip}>
+                    <a href={elem.demo}>
+                    <BS.Button style={btnStyle} bsStyle="success">Demo</BS.Button></a>
+                  </BS.OverlayTrigger>
                   <span style={style}></span>
-                  <BS.Button style={{width: 250, marginTop:10}}>{elem.feature}</BS.Button>
+                  <BS.Button active style={{width: 250, marginTop:10}}>{elem.feature}</BS.Button>
                   <span style={style}></span>
-                  <a href={elem.guide}>
-                  <BS.Button style={btnStyle} bsStyle="warning">{elem.api}</BS.Button></a>
+                  <BS.OverlayTrigger placement="top" overlay={powertip}>
+                    <a href={elem.guide}>
+                    <BS.Button style={btnStyle} bsStyle="warning">{elem.api}</BS.Button></a>
+                  </BS.OverlayTrigger>
                   <span style={style}></span>
-                  <a href={elem.code}>
-                  <BS.Button style={btnStyle} bsStyle="info">Code</BS.Button></a>
+                  <BS.OverlayTrigger placement="top" overlay={codetip}>
+                    <a href={elem.code}>
+                    <BS.Button style={btnStyle} bsStyle="info">Code</BS.Button></a>
+                  </BS.OverlayTrigger>
                   <span style={style}></span>
-                  <a href={elem.guide}>
-                  <BS.Button style={btnStyle} bsStyle="primary">API Docs</BS.Button></a>
+                  <BS.OverlayTrigger placement="top" overlay={apitip}>
+                    <a href={elem.guide}>
+                    <BS.Button style={btnStyle} bsStyle="primary">API Docs</BS.Button></a>
+                  </BS.OverlayTrigger>
+                  <span style={style}></span>
+                  {elem.video !== null ?
+                  <a href={elem.video}>
+                  <BS.Button active style={btnStyle} bsStyle="danger">Video Tutorial</BS.Button></a>
+                  :
+                  <BS.Button disabled style={btnStyle} bsStyle="danger">Video Tutorial Coming Soon</BS.Button>
+                  }
                   <span style={style}></span>
                 </BS.ListGroupItem>
                 )
