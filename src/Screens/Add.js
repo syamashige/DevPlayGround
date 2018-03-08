@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as BS from 'react-bootstrap';
 import * as C from './Components';
 import validator from 'validator';
+import axios from 'axios';
 
 
 
@@ -11,15 +12,15 @@ class Add extends Component {
 		super(props)
 
 		this.state ={
-			api: '',
-			feature: '',
-			demo: '',
+			api: 'testapi',
+			feature: 'testfeature',
+			demo: 'www.google.com',
 			demoIsUrl: false,
-			code: '',
+			code: 'www.google.com',
 			codeIsUrl: false,
-			guide: '',
+			guide: 'www.google.com',
 			guideIsUrl: false,
-			video: '',
+			video: 'www.google.com',
 			videoIsUrl: false
 		}
 	}
@@ -55,6 +56,11 @@ class Add extends Component {
   		video: video
   	}
   	console.log(local);
+  	axios.post('http://localhost:9000/add', local)
+  	.then(res => {
+  		console.log(res);
+  	})
+
 
   }
 
