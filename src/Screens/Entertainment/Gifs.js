@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Carousel, PageHeader } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import './Gifs.css';
 import {gifurl} from '../../config';
 

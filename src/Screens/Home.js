@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as C from './Components';
-import { Widget, addResponseMessage, toggleWidget } from 'react-chat-widget';
+import { Widget, addResponseMessage } from 'react-chat-widget';
 import axios from 'axios';
 import {data} from './data';
 import {chatUrl, apiurl} from '../config';
@@ -9,8 +9,8 @@ import {chatUrl, apiurl} from '../config';
 
 
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
     this.state={ 
       data: []
@@ -40,11 +40,15 @@ class Home extends Component {
 
   }
 
+  login() {
+    this.props.auth.login();
+  }
 
   render(){
+    const { auth } = this.props;
     return (
       <div>
-        <C.Header/>
+        <C.Header auth={auth} login={this.login.bind(this)}/>
         <Widget
             handleNewUserMessage={this.handleNewUserMessage}
             title="Welcome to API PlayGround!"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import {spaceUrl, mapurl} from '../../config';

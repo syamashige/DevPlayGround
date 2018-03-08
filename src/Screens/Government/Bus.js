@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { PropagateLoader } from 'react-spinners';
-import { Label, ListGroupItem, ListGroup, Button, Navbar, FormGroup, FormControl } from 'react-bootstrap';
+import { ListGroupItem, ListGroup, Button, Navbar, FormGroup, FormControl } from 'react-bootstrap';
 import axios from 'axios';
 import './Bus.css';
 import {busURL,mapUrl} from '../../config';

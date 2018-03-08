@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Navbar,FormGroup, FormControl, Button, Image, ListGroup, ListGroupItem, Col, Popover, Tooltip, Modal, OverlayTrigger,Badge,Glyphicon,Label} from 'react-bootstrap';
+import {Navbar,FormGroup, FormControl, Button, Image, ListGroup, ListGroupItem, Modal,Badge,Glyphicon} from 'react-bootstrap';
 import {moviedb,movieurl, wikipedia,hulu, imdb, rotten, amazon} from '../../config';
 
 
@@ -71,12 +71,7 @@ class Movies extends Component {
 
 
   render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-        very popover. such engagement
-      </Popover>
-    );
-    const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
+    
     
     return (
       <div>
