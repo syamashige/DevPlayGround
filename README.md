@@ -1,13 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## 30 Days of API - [API Playground](http://playground.baseem.me/).
 
+This Web-App will include a library of API samples - to make it easier when working with the varios API's available. 
 
-This Web-App will include a library of API samples - to make it easier when working with the varios API's available for us to use. 
-
-Including Code Samples, Videos, Demo Sites
+Including Code Samples, Demo Sites, and video tutorials.
 
 Below are examples for getting started with the different API's:
 
-## Emotional API - IBM WATSON
+## Emotional API - IBM WATSON - AUTH
 
 ```js
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
@@ -33,7 +32,7 @@ app.post('/', (req,res) => {
 });
 ```
 
-## Conversation API - IBM WATSON
+## Conversation API - IBM WATSON - AUTH
 
 ```js
 const ConversationV1 = require('watson-developer-cloud/conversation/v1');
@@ -59,7 +58,7 @@ app.post('/', (req,res) => {
 })
 ```
 
-## Translate API - GOOGLE
+## Translate API - GOOGLE - AUTH
 
 ```js
 
@@ -78,7 +77,7 @@ app.post('/', (req, res) => {
 })
 ```
 
-## Yelp API - YELP
+## Yelp API - YELP - AUTH
 
 ```js
 const yelp        = require('yelp-fusion');
@@ -108,7 +107,7 @@ app.get('/:id', (req, res) => {
 ```
 
 
-## TMDB - The Movie Database
+## TMDB - The Movie Database - AUTH
 
 ```js
  getFilm() {
@@ -126,7 +125,7 @@ app.get('/:id', (req, res) => {
 ```
 
 
-## DaBus API - Honolulu
+## DaBus API - Honolulu - AUTH
  - The api does not have json :(, you can use this npm package to convert xml to json:
 
 ```js
@@ -170,7 +169,7 @@ app.get('/:id', (req,res) => {
 
 ```
 
-## Archive.org API
+## Archive.org API - NO AUTH
 
 ```js
 app.get('/:id', (req, res) => {
@@ -185,7 +184,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-## GIFS! - Giphy API
+## GIFS! - Giphy API - AUTH
 
 ```js
 app.get('/:id', (req, res) => {
@@ -200,7 +199,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-## Song Search - BPM API
+## Song Search - BPM API - AUTH
 
 ```js
 app.get('/:id', (req, res) => {
@@ -215,7 +214,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-## Image Recognition - AWS Rekognition API
+## Image Recognition - AWS Rekognition API - AUTH
 
 - NPM Packages that help:
 ```js
@@ -269,4 +268,4 @@ app.post('/recognition', upload.single('image'), (req, res) => {
 });
 ```
 
-
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
