@@ -125,7 +125,7 @@ app.get('/:id', (req, res) => {
 ```
 
 
-## DaBus API - Honolulu - AUTH
+## [DaBus](http://hea.thebus.org/api_info.asp) API - Honolulu - AUTH
  - The api does not have json :(, you can use this npm package to convert xml to json:
 
 ```js
