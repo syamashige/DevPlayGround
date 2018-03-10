@@ -185,3 +185,17 @@ app.get('/:id', (req, res) => {
 })
 ```
 
+## GIFS! - Giphy API
+
+```js
+app.get('/:id', (req, res) => {
+  var query = req.params.id;
+  var url = `http://api.giphy.com/v1/gifs/search?q=random+${query}&api_key=${apikey}`;
+  axios.get(url)
+  .then(obj => {
+    res.json(obj.data);
+  }).catch(err => {
+    res.json('error')
+  })
+})
+```
