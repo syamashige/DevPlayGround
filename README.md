@@ -199,3 +199,20 @@ app.get('/:id', (req, res) => {
   })
 })
 ```
+
+## Song Search - BPM API
+
+```js
+app.get('/:id', (req, res) => {
+  let query = req.params.id;
+  let url = `https://api.getsongbpm.com/search/?api_key=${BPM_KEY}&type=song&lookup=${query}`
+  axios.get(url)
+  .then(data => {
+    res.json(data.data.search);
+  }).catch(err => {
+    res.json('error');
+  })
+})
+```
+
+
