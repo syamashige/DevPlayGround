@@ -6,7 +6,7 @@ Including Code Samples, Demo Sites, and video tutorials.
 
 Below are examples for getting started with the different API's:
 
-## Emotional API - IBM WATSON - AUTH
+## Emotional API - [IBM WATSON](https://www.ibm.com/watson/developercloud/personality-insights/api/v3/) - AUTH
 
 ```js
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
