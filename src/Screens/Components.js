@@ -75,7 +75,7 @@ export const apitip = (
   </BS.Tooltip>
 );
 
-export const RenderDemos = ({src}) => {
+export const RenderDemos = ({src,handler}) => {
   return(
     <BS.ListGroup>
     
@@ -184,5 +184,6 @@ const style = {
 }
 
 const btnStyle = {
-  marginTop: 10
+  marginTop: 10,
+  cursor: "pointer"
 }

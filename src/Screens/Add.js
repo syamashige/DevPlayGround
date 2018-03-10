@@ -30,7 +30,7 @@ class Add extends Component {
   }
 
   handleChange(e){
-  	const { api, feature, demo, code, guide, video } = this.state;
+  	const { demo, code, guide} = this.state;
   	let {title,value} = e.target;
   	this.setState({[title]:value})
   	if(validator.isURL(demo,['http','https'])){
