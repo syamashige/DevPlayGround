@@ -169,3 +169,19 @@ app.get('/:id', (req,res) => {
 })
 
 ```
+
+## Archive.org API
+
+```js
+app.get('/:id', (req, res) => {
+  let rows = req.params.id;
+  let mediatype = 'audio';
+  let output = 'json';
+  let archiveUrl = `https://archive.org/advancedsearch.php?q=subject%3A%22librivox%22+AND+mediatype%3A${mediatype}&fl[]=avg_rating&fl[]=publisher&fl[]=description&fl[]=downloads&fl[]=identifier&fl[]=mediatype&fl[]=num_reviews&fl[]=title&sort[]=&sort[]=&sort[]=&rows=${rows}&page=1&output=${output}`
+  axios.get(archiveUrl)
+  .then(elem => {
+    res.json(elem.data.response.docs);
+  })
+})
+```
+
