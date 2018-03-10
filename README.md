@@ -32,7 +32,7 @@ app.post('/', (req,res) => {
 });
 ```
 
-## Conversation API - IBM WATSON - AUTH
+## Conversation API - [IBM WATSON](https://www.ibm.com/watson/developercloud/personality-insights/api/v3/) - AUTH
 
 ```js
 const ConversationV1 = require('watson-developer-cloud/conversation/v1');
@@ -58,7 +58,7 @@ app.post('/', (req,res) => {
 })
 ```
 
-## Translate API - GOOGLE - AUTH
+## [Translate](https://cloud.google.com/translate/) API - GOOGLE - AUTH
 
 ```js
 
@@ -77,7 +77,7 @@ app.post('/', (req, res) => {
 })
 ```
 
-## Yelp API - YELP - AUTH
+## Yelp API - [YELP](https://www.yelp.com/fusion) - AUTH
 
 ```js
 const yelp        = require('yelp-fusion');
@@ -107,7 +107,7 @@ app.get('/:id', (req, res) => {
 ```
 
 
-## TMDB - The Movie Database - AUTH
+## [TMDB](https://www.themoviedb.org/documentation/api) - The Movie Database - AUTH
 
 ```js
  getFilm() {
@@ -169,7 +169,7 @@ app.get('/:id', (req,res) => {
 
 ```
 
-## Archive.org API - NO AUTH
+## [Archive.org](https://archive.org/) API - NO AUTH
 
 ```js
 app.get('/:id', (req, res) => {
@@ -184,7 +184,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-## GIFS! - Giphy API - AUTH
+## GIFS! - [Giphy](https://developers.giphy.com/docs/) API - AUTH
 
 ```js
 app.get('/:id', (req, res) => {
@@ -199,7 +199,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-## Song Search - BPM API - AUTH
+## Song Search - [BPM](https://getsongbpm.com/api) API - AUTH
 
 ```js
 app.get('/:id', (req, res) => {
@@ -214,7 +214,7 @@ app.get('/:id', (req, res) => {
 })
 ```
 
-## Image Recognition - AWS Rekognition API - AUTH
+## Image Recognition - [AWS](https://aws.amazon.com/rekognition/) Rekognition API - AUTH
 
 - NPM Packages that help:
 ```js
