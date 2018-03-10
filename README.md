@@ -215,4 +215,58 @@ app.get('/:id', (req, res) => {
 })
 ```
 
+## Image Recognition - AWS Rekognition API
+
+- NPM Packages that help:
+```js
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs-extra');
+const AWS = require('aws-sdk');
+const rekognition = new AWS.Rekognition({region: config.region}); //"us-east-1"
+```
+
+- Save the photo in a local folder
+```js
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'routes/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, 'bat' + path.extname(file.originalname))
+  }
+});
+const upload = multer({ storage: storage });
+```
+
+- Create the Params 
+```js
+function getImage(){
+  const imagePath = `./bat.jpg`;
+  const bitmap = fs.readFileSync(imagePath);
+  const params = {
+      Image: { 
+        Bytes: bitmap
+      },
+      MaxLabels: 10,
+      MinConfidence: 50.0
+    };
+  return params
+}
+```
+
+```js
+app.post('/recognition', upload.single('image'), (req, res) => {
+  let params = getImage();
+  rekognition.detectLabels(params, function(err, data) {
+    if (err) {
+      console.log('error');
+    }else {
+      console.log(data);
+      res.json(data);
+    }
+  });
+});
+```
+
 
