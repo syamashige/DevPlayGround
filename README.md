@@ -1,5 +1,7 @@
 ## 30 Days of API - [API Playground](http://playground.baseem.me/).
 
+[![IBM](https://img.shields.io/badge/IBM-API-blue.svg)](https://www.ibm.com/watson/developercloud/personality-insights/api/v3/) [![AWS](https://img.shields.io/badge/AWS-API-blue.svg)](https://aws.amazon.com/rekognition/) [![BUS](https://img.shields.io/badge/DABUS-API-blue.svg)](http://hea.thebus.org/api_info.asp) [![GOOGLE](https://img.shields.io/badge/GOOGLE-API-blue.svg)](https://cloud.google.com/translate/) [![YELP](https://img.shields.io/badge/YELP-API-blue.svg)](https://www.yelp.com/fusion) [![ARCHIVE](https://img.shields.io/badge/ARCHIVE-API-blue.svg)](https://archive.org/)
+
 This Web-App will include a library of API samples - to make it easier when working with the varios API's available. 
 
 Including Code Samples, Demo Sites, and video tutorials.
