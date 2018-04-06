@@ -379,7 +379,7 @@ const AWS = require('aws-sdk');
 const rekognition = new AWS.Rekognition({region: "us-east-1"});
 
 const getVideo = (id) => {
-  const params = {
+  let params = {
     JobId: id, /* required */
     MaxResults: 10, // upto 100
     NextToken: 'NextToken',
@@ -393,7 +393,7 @@ const getVideo = (id) => {
 }
 
 
-var s3Params = {                   
+let s3Params = {                   
   Video: {
     S3Object: {          
       Bucket: 'bucket name', // bucket name found on S3 Dashboard                                                                    
