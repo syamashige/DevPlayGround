@@ -369,5 +369,55 @@ app.listen(9000);
 
 ```
 
+## Video Analysis with AWS Rekognition - [AWS](https://aws.amazon.com/rekognition/) Rekognition API - AUTH 
+
+```js
+const express = require('express');
+const app = express();
+const AWS = require('aws-sdk');
+
+const rekognition = new AWS.Rekognition({region: "us-east-1"});
+
+const getVideo = (id) => {
+  const params = {
+    JobId: id, /* required */
+    MaxResults: 10, // upto 100
+    NextToken: 'NextToken',
+    SortBy: "TIMESTAMP" // Also can be sorted by "NAME"
+  };
+  rekognition.getLabelDetection(params, function(err, data) {
+      err
+      ? console.log(err) // Common errors are related to AWS AUTH or JobId is invalid
+      : console.log(data)
+    })
+}
+
+
+var s3Params = {                   
+  Video: {
+    S3Object: {          
+      Bucket: 'bucket name', // bucket name found on S3 Dashboard                                                                    
+      Name: 'name.mp4' // case sensitive         
+    }                       
+  },
+  // Optional -reuseable token setting
+  "MinConfidence": 50,           
+  NotificationChannel: {                                                                           
+    RoleArn: `IAMROLE`, // found on AWS IAM Dashboard                            
+    SNSTopicArn: `SNSTopicArn` // found on AWS Service: SNS                                              
+  }
+ }
+
+app.get('/start', (req,res) => {
+  rekognition.startLabelDetection(s3Params, function(err, data) {
+    err
+    ? console.log(err)
+    : getVideo(data.JobId)
+  });
+  res.json('Check Console for Status')
+})
+
+app.listen(9000);
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
