@@ -314,5 +314,60 @@ var params = {
   OrientationCorrection: 'ROTATE_0' }
 ```
 
+## Historical Weather API - DarkSky.net
+
+```js
+const express = require('express');
+const app = express();
+const DarkSky = require('dark-sky')
+const darksky = new DarkSky('process.env.API_KEY');
+
+app.get('/:year/:month/:lat/:lng', (req, res) => {
+  let year = req.param.year;
+  let month = req.params.month;
+  let lat = req.params.lat;
+  let lng = req.params.lng;
+  month === '2'
+  ? count = 28
+  : count = 30
+
+  for(let i = 1; i < count; i++){ // run based off days in month
+      darksky
+      .latitude(lat) // set location lat
+      .longitude(lng) // set location lng
+      .time(`${year}-${month}-${i}`) // date based off api call
+      .units('ca') // kph - mph available - check docs
+      .get() // make request
+      .then(data=>{   
+        let num = 0;   
+        data.hourly.data.map(elem => {
+          num ++;
+          console.log({
+            hour: `Hour: ${num}`,
+            time: elem.time,
+            windSpeed: elem.windSpeed,
+            units: 'KPH',
+            windBearing: elem.windBearing
+          })
+        })
+      })
+      .catch(console.log);
+  }
+  res.json('Check your console - Data will be there');
+})
+
+app.listen(9000);
+```
+ - Output Example:
+```js
+
+{ hour: 'Hour: 24',
+  time: 983696400,
+  windSpeed: 16.8,
+  units: 'KPH',
+  windBearing: 70 }
+
+```
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
