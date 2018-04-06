@@ -314,7 +314,7 @@ var params = {
   OrientationCorrection: 'ROTATE_0' }
 ```
 
-## Historical Weather API - DarkSky.net
+## Historical Weather API - DarkSky [Dark](https://darksky.net/forecast/40.7127,-74.0059/us12/en)
 
 ```js
 const express = require('express');
