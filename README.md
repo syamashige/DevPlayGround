@@ -321,12 +321,23 @@ const express = require('express');
 const app = express();
 const DarkSky = require('dark-sky')
 const darksky = new DarkSky('process.env.API_KEY');
+const beaufort = require('beaufort')
+const options = {unit: 'kmh', getName: true};
 
-app.get('/:year/:month/:lat/:lng', (req, res) => {
+const degToCompass = (val_num) => {
+    let num = parseInt(val_num);
+    let val = Math.floor((num / 22.5) + 0.5);
+    let arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+    return arr[(val % 16)];
+}
+
+// sample api request -> http://localhost:9000/2017/3/21.308714/-157.808782/8
+app.get('/:year/:month/:lat/:lng/:hours', (req, res) => {
   let year = req.params.year;
   let month = req.params.month;
   let lat = req.params.lat;
   let lng = req.params.lng;
+  let hours = req.params.hours; // ex. 8 will respond with 0:00am - 08:00am
   month === '2'
   ? count = 28
   : count = 30
@@ -342,13 +353,20 @@ app.get('/:year/:month/:lat/:lng', (req, res) => {
         let num = 0;   
         data.hourly.data.map(elem => {
           num ++;
-          console.log({
-            hour: `Hour: ${num}`,
-            time: elem.time,
-            windSpeed: elem.windSpeed,
-            units: 'KPH',
-            windBearing: elem.windBearing
-          })
+          let timeConverted = new Date(elem.time*1000).toString();
+          let y = new Date(timeConverted);
+          let z = y.getHours();
+          if(parseInt(z) <= hours){
+            let local = {
+              hour: `Hour: ${num}`,
+              time: timeConverted,
+              windSpeed: elem.windSpeed,
+              beaufort: beaufort(parseInt(elem.windSpeed), options),
+              units: 'KPH',
+              windBearing: degToCompass(elem.windBearing)
+            }
+            console.log(local);
+          }
         })
       })
       .catch(console.log);
