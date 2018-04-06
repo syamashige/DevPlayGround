@@ -323,7 +323,7 @@ const DarkSky = require('dark-sky')
 const darksky = new DarkSky('process.env.API_KEY');
 
 app.get('/:year/:month/:lat/:lng', (req, res) => {
-  let year = req.param.year;
+  let year = req.params.year;
   let month = req.params.month;
   let lat = req.params.lat;
   let lng = req.params.lng;
