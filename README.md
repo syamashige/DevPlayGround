@@ -14,6 +14,7 @@ Below are examples for getting started with the different API's:
 ## Emotional API - [IBM WATSON](https://www.ibm.com/watson/developercloud/personality-insights/api/v3/) - AUTH
 
 ```js
+const baseem = require('baseem');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 const personality_insights = new PersonalityInsightsV3({
   username: process.env.IBM_USERNAME,
@@ -43,6 +44,7 @@ app.post('/', (req,res) => {
 const ConversationV1 = require('watson-developer-cloud/conversation/v1');
 const conversation = new ConversationV1(config.conversParams);
 const workspace_id = process.env.IBM_WORKSPACEID;
+const baseem = require('baseem');
 
 app.post('/', (req,res) => {
   var msg = req.body.msg;
@@ -91,6 +93,7 @@ const client      = yelp.client(API_KEY);
 const yelp = require('yelp-fusion');
 const API_KEY = process.env.YELP_APIKEY;
 const client = yelp.client(API_KEY);
+const baseem = require('baseem');
 
 app.get('/:id', (req, res) => {
   const zipcode = req.params.id;
@@ -139,6 +142,7 @@ const parseString = require('fast-xml2js').parseString;
 
 ```js
 const busURL = `http://api.thebus.org/arrivals/?key=${API_KEY}&stop=`;
+const baseem = require('baseem');
 
 app.get('/:id', (req,res) => {
   var all = []
@@ -168,7 +172,7 @@ app.get('/:id', (req,res) => {
     res.json(all)
   });
   }).catch(err =>{
-    console.log('error')
+    console.log(baseem('error'))
   })
 })
 
@@ -177,6 +181,7 @@ app.get('/:id', (req,res) => {
 ## [Archive.org](https://archive.org/) API - NO AUTH
 
 ```js
+
 app.get('/:id', (req, res) => {
   let rows = req.params.id;
   let mediatype = 'audio';
@@ -225,6 +230,7 @@ app.get('/:id', (req, res) => {
 ```js
 const multer = require('multer');
 const path = require('path');
+const baseem = require('baseem');
 const fs = require('fs-extra');
 const AWS = require('aws-sdk');
 const rekognition = new AWS.Rekognition({region: config.region}); //"us-east-1"
@@ -264,7 +270,7 @@ app.post('/recognition', upload.single('image'), (req, res) => {
   let params = getImage();
   rekognition.detectLabels(params, function(err, data) {
     if (err) {
-      console.log('error');
+      console.log(baseem('error'));
     }else {
       console.log(data);
       res.json(data);
@@ -281,7 +287,7 @@ app.post('/recognition', upload.single('image'), (req, res) => {
 - Code for analysis - nodeJs
 ```js
 const AWS = require('aws-sdk');
-
+const baseem = require('baseem');
 const rekognition = new AWS.Rekognition({region: "us-east-1"});
 
 var params = {
@@ -319,6 +325,7 @@ var params = {
 ```js
 const express = require('express');
 const app = express();
+const baseem = require('baseem');
 const DarkSky = require('dark-sky')
 const darksky = new DarkSky('process.env.API_KEY');
 const beaufort = require('beaufort')
@@ -371,7 +378,7 @@ app.get('/:year/:month/:lat/:lng/:hours', (req, res) => {
       })
       .catch(console.log);
   }
-  res.json('Check your console - Data will be there');
+  res.json(baseem('Check your console - Data will be there'));
 })
 
 app.listen(9000);
@@ -392,6 +399,7 @@ app.listen(9000);
 ```js
 const express = require('express');
 const app = express();
+const baseem = require('baseem');
 const AWS = require('aws-sdk');
 
 const rekognition = new AWS.Rekognition({region: "us-east-1"});
@@ -432,7 +440,7 @@ app.get('/start', (req,res) => {
     ? console.log(err)
     : getVideo(data.JobId)
   });
-  res.json('Check Console for Status')
+  res.json(baseem('Check Console for Status'))
 })
 
 app.listen(9000);
