@@ -405,7 +405,7 @@ const rekognition = new AWS.Rekognition({region: "us-east-1"});
 
 // FYI: This will work if you have used AWS-CLI and configured your key/secret key
 
-var params = {
+let params = {
   Video: { /* required */
     S3Object: {
       Bucket: 'bucket_name', // s3 bucket name
@@ -428,7 +428,7 @@ rekognition.startLabelDetection(params, function(err, data) {
 
 let jobID = "from startLabelDetection response";
 
-var params1 = {
+let params1 = {
   JobId: jobID, /* required */
   MaxResults: 100, // MAX 1000
   NextToken: 'token', // returned if more labels are found
