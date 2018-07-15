@@ -5,7 +5,7 @@
 
 
 
-This Web-App will include a library of API samples - to make it easier when working with the varios API's available. 
+This Web-App will include a library of API samples - to make it easier when working with the varios API's available.
 
 Including Code Samples, Demo Sites, and video tutorials.
 
@@ -73,7 +73,7 @@ app.post('/', (req, res) => {
   var q = req.body.q;
   var options = { method: 'POST',
    url: 'https://translation.googleapis.com/language/translate/v2',
-   form: 
+   form:
      { key: process.env.API_KEY,
        q: q,
        target: 'en' } };
@@ -249,13 +249,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 ```
 
-- Create the Params 
+- Create the Params
 ```js
 function getImage(){
   const imagePath = `./bat.jpg`;
   const bitmap = fs.readFileSync(imagePath);
   const params = {
-      Image: { 
+      Image: {
         Bytes: bitmap
       },
       MaxLabels: 10,
@@ -279,7 +279,7 @@ app.post('/recognition', upload.single('image'), (req, res) => {
 });
 ```
 
-## Image Label Detection - [AWS](https://aws.amazon.com/rekognition/) Rekognition API - AUTH 
+## Image Label Detection - [AWS](https://aws.amazon.com/rekognition/) Rekognition API - AUTH
 
 - Image submitted for analysis
 <img src="./ship.jpg" width="300"/>
@@ -293,11 +293,11 @@ const rekognition = new AWS.Rekognition({region: "us-east-1"});
 var params = {
   Image: {
    S3Object: {
-    Bucket: "S3 BUCKET_NAME", 
+    Bucket: "S3 BUCKET_NAME",
     Name: "ship.jpg"
    }
-  }, 
-  MaxLabels: 123, 
+  },
+  MaxLabels: 123,
   MinConfidence: 40
  };
  rekognition.detectLabels(params, function(err, data) {
@@ -356,8 +356,8 @@ app.get('/:year/:month/:lat/:lng/:hours', (req, res) => {
       .time(`${year}-${month}-${i}`) // date based off api call
       .units('ca') // kph - mph available - check docs
       .get() // make request
-      .then(data=>{   
-        let num = 0;   
+      .then(data=>{
+        let num = 0;
         data.hourly.data.map(elem => {
           num ++;
           let timeConverted = new Date(elem.time*1000).toString();
@@ -394,56 +394,53 @@ app.listen(9000);
 
 ```
 
-## Video Analysis with AWS Rekognition - [AWS](https://aws.amazon.com/rekognition/) Rekognition API - AUTH 
+## Video Analysis with AWS Rekognition - [AWS](https://aws.amazon.com/rekognition/) Rekognition API - AUTH
 
 ```js
 const express = require('express');
 const app = express();
 const baseem = require('baseem');
-const AWS = require('aws-sdk');
-
+const AWS = require('aws-sdk'); // NPM Package - makes life easier
 const rekognition = new AWS.Rekognition({region: "us-east-1"});
 
-const getVideo = (id) => {
-  let params = {
-    JobId: id, /* required */
-    MaxResults: 10, // upto 100
-    NextToken: 'NextToken',
-    SortBy: "TIMESTAMP" // Also can be sorted by "NAME"
-  };
-  rekognition.getLabelDetection(params, function(err, data) {
-      err
-      ? console.log(err) // Common errors are related to AWS AUTH or JobId is invalid
-      : console.log(data)
-    })
-}
+// FYI: This will work if you have used AWS-CLI and configured your key/secret key
 
-
-let s3Params = {                   
-  Video: {
-    S3Object: {          
-      Bucket: 'bucket name', // bucket name found on S3 Dashboard                                                                    
-      Name: 'name.mp4' // case sensitive         
-    }                       
+var params = {
+  Video: { /* required */
+    S3Object: {
+      Bucket: 'bucket_name', // s3 bucket name
+      Name: 'video_name.mp4', // video name case sensitive
+    }
   },
-  // Optional -reuseable token setting
-  "MinConfidence": 50,           
-  NotificationChannel: {                                                                           
-    RoleArn: `IAMROLE`, // found on AWS IAM Dashboard                            
-    SNSTopicArn: `SNSTopicArn` // found on AWS Service: SNS                                              
+  ClientRequestToken: 'request_name', // any name you prefer
+  MinConfidence: 90,
+  NotificationChannel: {
+    RoleArn: 'role_arn', // found on AWS IAM Dashboard
+    SNSTopicArn: `SNSTopicArn` // found on AWS Service: SNS
   }
- }
+};
 
-app.get('/start', (req,res) => {
-  rekognition.startLabelDetection(s3Params, function(err, data) {
-    err
-    ? console.log(err)
-    : getVideo(data.JobId)
-  });
-  res.json(baseem('Check Console for Status'))
-})
+/* RUN FIRST to get job ID */
+rekognition.startLabelDetection(params, function(err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else     console.log(data);           // successful response
+});
 
-app.listen(9000);
+let jobID = "from startLabelDetection response";
+
+var params1 = {
+  JobId: jobID, /* required */
+  MaxResults: 100, // MAX 1000
+  NextToken: 'token', // returned if more labels are found
+  SortBy: "TIMESTAMP" // NAME
+};
+
+rekognition.getLabelDetection(params1, function(err, data) {
+  if (err) console.log(err, err.stack); // an error occurred
+  else{
+    res.json(data.Labels);
+  };
+});
 ```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
