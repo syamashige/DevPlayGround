@@ -11,8 +11,8 @@ import {chatUrl, apiurl} from '../config';
 class Home extends Component {
   constructor(props) {
     super(props);
-    
-    this.state={ 
+
+    this.state={
       data: []
     }
     this.handleNewUserMessage=this.handleNewUserMessage.bind(this);
@@ -46,6 +46,7 @@ class Home extends Component {
 
   render(){
     const { auth } = this.props;
+    console.log(this.state.data);
     return (
       <div>
         <C.Header auth={auth} login={this.login.bind(this)}/>
@@ -58,7 +59,7 @@ class Home extends Component {
       </div>
     );
   }
-} 
+}
 
 
 export default Home;

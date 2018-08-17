@@ -6,6 +6,7 @@ import Movies from './Entertainment/Movies';
 import Gifs from './Entertainment/Gifs';
 import Space from './Entertainment/Space';
 import Translate from './Google/Translate';
+import Analyzer from './AWS/VideoAnalysis';
 
 //Web App utility imports
 import Add from './Add';
@@ -15,13 +16,14 @@ import Add from './Add';
 
 // index.js -> screens.index.js -> screens folder -> IBM folder -> Emotion
 
-export { 
-	Home, 
-	Emotion, 
-	BusSearch, 
-	Movies, 
-	Translate, 
-	Gifs, 
-	Space, 
-	Add
+export {
+	Home,
+	Emotion,
+	BusSearch,
+	Movies,
+	Translate,
+	Gifs,
+	Space,
+	Add,
+  Analyzer
 	 };

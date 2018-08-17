@@ -17,35 +17,38 @@ export const makeMainRoutes = () => {
   return (
       <Router history={history}>
         <div>
-          <Route exact path="/" render={(props) => 
+          <Route exact path="/" render={(props) =>
             <Screens.Home auth={auth} {...props} />}>
           </Route>
-          <Route path="/emotions" render={(props) => 
+          <Route path="/emotions" render={(props) =>
             <Screens.Emotion auth={auth} {...props} />}>
           </Route>
-          <Route path="/bus" render={(props) => 
+          <Route path="/bus" render={(props) =>
             <Screens.BusSearch auth={auth} {...props} />}>
           </Route>
-          <Route path="/movie" render={(props) => 
+          <Route path="/movie" render={(props) =>
             <Screens.Movies auth={auth} {...props} />}>
           </Route>
-          <Route path="/translate" render={(props) => 
+          <Route path="/translate" render={(props) =>
             <Screens.Translate auth={auth} {...props} />}>
           </Route>
-          <Route path="/gifs" render={(props) => 
+          <Route path="/gifs" render={(props) =>
             <Screens.Gifs auth={auth} {...props} />}>
           </Route>
-          <Route path="/space" render={(props) => 
+          <Route path="/space" render={(props) =>
             <Screens.Space auth={auth} {...props} />}>
           </Route>
-          <Route path="/add" render={(props) => 
+          <Route path="/add" render={(props) =>
             <Screens.Add auth={auth} {...props} />}>
+          </Route>
+          <Route path="/analyzer" render={(props) =>
+            <Screens.Analyzer auth={auth} {...props} />}>
           </Route>
 
 
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
-            return <Callback {...props} /> 
+            return <Callback {...props} />
           }}/>
         </div>
       </Router>
