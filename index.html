@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Leaflet</title>
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+</head>
+<body>
+	<div id="mapid"></div>	
+</body>
+
+
+<script>
+
+	// Set center location coords:
+	let coords = [21.284, -157.684];
+	// Set zoom level:
+	let zoom = 13;
+	// Set free map attribution for demo purposes:
+	let attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+	// Set map link resource:
+	let mapResourceUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	// initialize map
+	let mymap = L.map('mapid').setView(coords, zoom);
+	// add tile layer - if your map is every greyed out - its because you have not added a tile layer
+	// chrome has issue with map showing up until scroll or resize of window - known issue
+	L.tileLayer(mapResourceUrl, { attribution: attribution }).addTo(mymap);
+	// add a marker
+	L.marker(coords).addTo(mymap)
+    .bindPopup('Aloha!')
+    .openPopup();
+
+  // Set circle design options:
+  let circleDesignOptions = {
+  	color: 'red', 
+  	radius: 500,
+  	weight: 5
+  };
+  // add a circle
+  L.circle(coords, circleDesignOptions).addTo(mymap);
+
+	
+</script>
+
+<style>
+	#mapid { height: 480px; width: 480px; }
+</style>
+</html>
