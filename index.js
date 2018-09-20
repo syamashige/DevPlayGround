@@ -1,19 +1,33 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
+require('dotenv').config()
 
 
-// LIST OF API's
-// https://github.com/toddmotto/public-apis
+// NOAA API - Datasets
+// https://www.ncdc.noaa.gov/cdo-web/webservices/v2
+
+
+
+
+let token = process.env.NOAA_API_KEY;
+
 
 
 app.get('/', (req,res) => {
-	axios.get('https://aws.random.cat/meow')
+	let startdate = '2010-05-01';
+	let enddate = '2010-05-01';
+	let url = `https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate=${startdate}&enddate=${enddate}
+`;
+	axios.get(url, {headers: { 
+			token: token
+		}
+	})
 	.then(response => {
-		let page = `<img src=${response.data.file}></img>`
-		res.send(page);
+		res.json(response.data)
 	})
 	.catch(err => {
+		console.log(err);
 		res.json('oh nooooooooo! it brokesh*t')
 	})
 });
@@ -22,3 +36,4 @@ app.get('/', (req,res) => {
 
 
 app.listen(9000);
+
