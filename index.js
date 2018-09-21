@@ -17,16 +17,22 @@ const degToCompass = (val_num) => {
 }
 
 // sample api request -> http://localhost:9000/2017/3/21.308714/-157.808782/8
-app.get('/', (req, res) => {
-	let lat = 21.282;
-	let lng = -157.661
-	axios.get(`https://api.darksky.net/forecast/${darksky.apiKey}/${lat},${lng}`)
-	.then(response => {
+app.get('/:year/:month/:lat/:lng/:hours', (req, res) => {
+	let { lat, lng, year, month, hours } = req.params;
+	let day = 01;
+	darksky
+	.latitude(lat)
+	.longitude(lng)
+	.time(`${year}-${month}-${day}`) // date based off api call
+  .units('ca') // kph - mph available - check docs
+  .get()
+  .then(data => {
 
-		res.json(response.data);
-	}).catch(err => {
-		res.json('its probably raining...')
-	})
+  	res.json(data.hourly.data);
+  })
+  .catch(err => {
+  	res.json('Its probably raining...somewhere')
+  })
 })
 
 app.listen(9000);
