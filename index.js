@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
-const baseem = require('baseem');
 const DarkSky = require('dark-sky')
 require('dotenv').config()
 const darksky = new DarkSky(process.env.DARKSKY_API_KEY);
-const beaufort = require('beaufort')
-const options = {unit: 'kmh', getName: true};
 const axios = require('axios');
 
 
