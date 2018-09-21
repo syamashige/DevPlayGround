@@ -9,7 +9,7 @@ var params = {
    }
   },
   MaxLabels: 123,
-  MinConfidence: 40
+  MinConfidence: 40 //the percentage of the match
  };
  
  rekognition.detectLabels(params, function(err, data) {

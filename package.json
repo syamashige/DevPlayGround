@@ -1,0 +1,22 @@
+{
+  "name": "devplayground",
+  "version": "1.0.0",
+  "description": "- Image submitted for analysis <img src=\"./ship.jpg\" width=\"300\"/>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syamashige/DevPlayGround.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syamashige/DevPlayGround/issues"
+  },
+  "homepage": "https://github.com/syamashige/DevPlayGround#readme",
+  "dependencies": {
+    "aws-sdk": "^2.319.0"
+  }
+}
